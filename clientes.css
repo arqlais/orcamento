@@ -1,0 +1,67 @@
+/* =========================================================
+   Central de Clientes — estilos específicos (usa tokens de precificador.css)
+   ========================================================= */
+
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.stat-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:18px 16px}
+.stat-box .s-lbl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stat-box .s-val{font-size:22px;font-weight:700;color:var(--navy-dark);margin-top:6px}
+.stat-box.accent .s-val{color:var(--terra-dark)}
+
+.deadlines-list{display:flex;flex-direction:column;gap:8px}
+.deadline-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--radius-sm);background:var(--cream);border:1px solid var(--line)}
+.deadline-item.overdue{background:#fbeceb;border-color:#e3b3af}
+.deadline-item.soon{background:var(--warn-tint);border-color:#e0c19f}
+.deadline-item .d-name{font-size:13.5px;font-weight:700;color:var(--navy-dark)}
+.deadline-item .d-date{font-size:12px;color:var(--muted);margin-top:2px}
+.deadline-item.overdue .d-date{color:#b1453e;font-weight:700}
+.deadline-item.soon .d-date{color:var(--warn);font-weight:700}
+.deadline-empty{text-align:center;padding:22px 10px;color:var(--muted);font-size:13px}
+
+.clients-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.clients-head h2{font-size:18px}
+.filters-row{margin:14px 0 18px}
+
+.client-list{display:flex;flex-direction:column;gap:10px}
+.client-card{
+  display:grid;grid-template-columns:1.4fr .9fr .9fr .7fr;gap:14px;align-items:center;
+  background:var(--cream);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:16px 18px;cursor:pointer;transition:border-color .2s,transform .2s;overflow:hidden;
+}
+.client-card > div{min-width:0}
+.client-card:hover{border-color:var(--terra);transform:translateY(-1px)}
+.client-card .cc-name{font-size:14.5px;font-weight:700;color:var(--navy-dark)}
+.client-card .cc-scope{font-size:11.5px;color:var(--muted);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.client-card .cc-col{font-size:12.5px;color:var(--ink)}
+.client-card .cc-col .k{display:block;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.client-card .cc-status{justify-self:end}
+
+.status-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.status-badge.aberto{background:var(--warn-tint);color:var(--warn)}
+.status-badge.parcial{background:var(--terra-tint);color:var(--terra-dark)}
+.status-badge.pago{background:var(--good-tint);color:var(--good)}
+
+.client-empty{text-align:center;padding:40px 10px;color:var(--muted);font-size:14px}
+
+/* detail modal */
+.detail-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:6px}
+.detail-head h3{font-size:19px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:18px 0}
+.detail-grid .dg-item .k{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.detail-grid .dg-item .v{font-size:15px;font-weight:700;color:var(--navy-dark);margin-top:4px}
+.detail-scope{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 16px;font-size:13px;color:var(--ink);white-space:pre-line;line-height:1.6;margin-bottom:18px;max-height:200px;overflow-y:auto}
+.detail-progress{margin-bottom:18px}
+.detail-progress .bar{height:10px;border-radius:100px;background:var(--line);overflow:hidden}
+.detail-progress .bar-fill{height:100%;background:var(--good);border-radius:100px;transition:width .3s}
+.detail-progress .bar-lbl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:6px}
+.detail-actions{display:flex;flex-wrap:wrap;gap:10px}
+.detail-actions .btn{flex:1;min-width:130px}
+.detail-actions .btn-danger{background:transparent;color:#b1453e;border:1.5px solid #e3b3af}
+.detail-actions .btn-danger:hover{background:#fbeceb}
+
+@media (max-width:900px){
+  .stats-row{grid-template-columns:1fr 1fr}
+  .client-card{grid-template-columns:1fr;gap:8px}
+  .client-card .cc-status{justify-self:start}
+  .detail-grid{grid-template-columns:1fr}
+}
