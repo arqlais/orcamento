@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precificador — Laís Vieira</title>
+<meta name="description" content="Ferramenta pessoal de Laís Vieira para precificar renderização, modelagem 3D, detalhamento e projeto executivo.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234b5e6c'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Georgia,serif' font-style='italic' fill='%23f5f2ee' text-anchor='middle'%3El%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="precificador.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand"><b>laís</b><span class="dot">.</span><span class="tag">precificador</span></a>
+    <div class="header-actions">
+      <a href="index.html" class="btn btn-ghost btn-sm">← portfólio</a>
+      <a href="https://api.whatsapp.com/send?phone=5511969288192" target="_blank" rel="noopener" class="btn btn-accent btn-sm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21l1.5-4.5A8 8 0 1 1 8 20.2L3 21z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">uso pessoal · precificação de projetos</span>
+      <h1>monte seu <em>orçamento</em><br>em poucos cliques</h1>
+      <p class="lead">Calculadora interna baseada na sua tabela de preços 2026 — renderização VRay/IA, modelagem 3D, detalhamento e projeto executivo. Ajuste os valores-base quando quiser reajustar a tabela, monte o orçamento por item e copie o texto pronto para enviar ao cliente.</p>
+    </div>
+  </section>
+
+  <section class="tool">
+    <div class="wrap tool-grid">
+
+      <!-- ===================== CALCULADORA ===================== -->
+      <div class="card">
+        <h2><span class="n">01</span>escolha o serviço</h2>
+        <p class="hint">Selecione a modalidade, preencha a quantidade e adicione ao orçamento. Repita para montar um pacote com vários serviços.</p>
+
+        <div class="tabs" id="tabs">
+          <button class="tab-btn active" data-tab="vray">render vray</button>
+          <button class="tab-btn" data-tab="ia">render i.a</button>
+          <button class="tab-btn" data-tab="modelagem">modelagem 3d</button>
+          <button class="tab-btn" data-tab="detalhamento">detalhamento</button>
+          <button class="tab-btn" data-tab="executivo">executivo</button>
+        </div>
+
+        <!-- RENDER VRAY -->
+        <div class="pane active" data-pane="vray">
+          <div class="field">
+            <label>Quantidade de imagens</label>
+            <input type="number" id="vray-qtd" min="1" value="1" step="1">
+          </div>
+          <div class="tier-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <span>Quanto mais imagens, menor o valor por imagem — faixas de 1, 5, 10 e 15+ imagens (editável nas configurações).</span>
+          </div>
+          <div class="preview" id="vray-preview">
+            <div><div class="lbl">total</div><div class="val">R$ 0,00</div><div class="rate"></div></div>
+          </div>
+        </div>
+
+        <!-- RENDER IA -->
+        <div class="pane" data-pane="ia">
+          <div class="field">
+            <label>Quantidade de imagens</label>
+            <input type="number" id="ia-qtd" min="1" value="1" step="1">
+          </div>
+          <div class="tier-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <span>Renderização por IA — entrega mais rápida, ótimo custo-benefício. Faixas de preço iguais à lógica do VRay.</span>
+          </div>
+          <div class="preview" id="ia-preview">
+            <div><div class="lbl">total</div><div class="val">R$ 0,00</div><div class="rate"></div></div>
+          </div>
+        </div>
+
+        <!-- MODELAGEM -->
+        <div class="pane" data-pane="modelagem">
+          <div class="field">
+            <label>Área do projeto <span class="sub">(m²)</span></label>
+            <input type="number" id="mdl-area" min="1" value="50" step="0.5">
+          </div>
+          <div class="tier-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <span>Pequeno porte até 50m², médio de 51 a 120m², grande acima de 120m². Não inclui texturas, iluminação ou render.</span>
+          </div>
+          <div class="preview" id="mdl-preview">
+            <div><div class="lbl">total</div><div class="val">R$ 0,00</div><div class="rate"></div></div>
+          </div>
+        </div>
+
+        <!-- DETALHAMENTO -->
+        <div class="pane" data-pane="detalhamento">
+          <div class="field">
+            <label>Modalidade</label>
+            <div class="chip-group" id="det-modalidade">
+              <button class="chip active" data-val="itens">Itens (marcenaria, marmoraria...)</button>
+              <button class="chip" data-val="ambientes">Ambientes (banheiro, cozinha...)</button>
+            </div>
+          </div>
+          <div class="field">
+            <label id="det-label">Quantidade de peças</label>
+            <input type="number" id="det-qtd" min="1" value="1" step="1">
+          </div>
+          <div class="tier-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <span>Valores "a partir de" — pacotes maiores costumam ter desconto combinado à parte.</span>
+          </div>
+          <div class="preview" id="det-preview">
+            <div><div class="lbl">total</div><div class="val">R$ 0,00</div><div class="rate"></div></div>
+          </div>
+        </div>
+
+        <!-- EXECUTIVO -->
+        <div class="pane" data-pane="executivo">
+          <div class="field">
+            <label>Modalidade</label>
+            <div class="chip-group" id="exe-modalidade">
+              <button class="chip active" data-val="interiores">Executivo de Interiores</button>
+              <button class="chip" data-val="arquitetonico">Executivo Arquitetônico</button>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label>Área <span class="sub">(m²)</span></label>
+              <input type="number" id="exe-area" min="1" value="80" step="0.5">
+            </div>
+            <div class="field">
+              <label>Ajuste <span class="sub">(complexidade/urgência, %)</span></label>
+              <input type="number" id="exe-ajuste" value="0" step="1">
+            </div>
+          </div>
+          <div class="tier-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <span>O briefing inicial é gratuito. Este valor é uma base — o fechado é apresentado após análise da planta. Use o ajuste para urgência (+) ou projetos grandes (−).</span>
+          </div>
+          <div class="preview" id="exe-preview">
+            <div><div class="lbl">total</div><div class="val">R$ 0,00</div><div class="rate"></div></div>
+          </div>
+        </div>
+
+        <div class="add-row">
+          <div class="field">
+            <label>Observação do item <span class="sub">(opcional)</span></label>
+            <input type="text" id="item-nota" placeholder="ex: cozinha + sala, cliente João">
+          </div>
+        </div>
+        <button class="btn btn-primary" id="btn-add" style="margin-top:14px;width:100%">
+          adicionar ao orçamento
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+
+        <!-- CONFIGURAÇÕES -->
+        <div style="margin-top:26px;padding-top:20px;border-top:1px solid var(--line)">
+          <div class="settings-toggle" id="settings-toggle">
+            <h2 style="font-size:14.5px">⚙ configurar valores-base da tabela</h2>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="settings-body" id="settings-body">
+            <p class="hint" style="margin-bottom:16px">Reajuste sua tabela quando quiser — os valores ficam salvos neste navegador.</p>
+            <div class="rate-grid">
+              <div class="rate-field"><label>VRay · 1 imagem (R$/img)</label><input type="number" id="r-vray-1"></div>
+              <div class="rate-field"><label>VRay · 5 imagens (R$/img)</label><input type="number" id="r-vray-5"></div>
+              <div class="rate-field"><label>VRay · 10 imagens (R$/img)</label><input type="number" id="r-vray-10"></div>
+              <div class="rate-field"><label>VRay · 15+ imagens (R$/img)</label><input type="number" id="r-vray-15"></div>
+              <div class="rate-field"><label>IA · 1 imagem (R$/img)</label><input type="number" id="r-ia-1"></div>
+              <div class="rate-field"><label>IA · 5 imagens (R$/img)</label><input type="number" id="r-ia-5"></div>
+              <div class="rate-field"><label>IA · 10 imagens (R$/img)</label><input type="number" id="r-ia-10"></div>
+              <div class="rate-field"><label>IA · 15+ imagens (R$/img)</label><input type="number" id="r-ia-15"></div>
+              <div class="rate-field"><label>Modelagem até 50m² (R$/m²)</label><input type="number" id="r-mdl-1"></div>
+              <div class="rate-field"><label>Modelagem 51–120m² (R$/m²)</label><input type="number" id="r-mdl-2"></div>
+              <div class="rate-field"><label>Modelagem acima 120m² (R$/m²)</label><input type="number" id="r-mdl-3"></div>
+              <div class="rate-field"><label>Detalhamento por peça (R$)</label><input type="number" id="r-det-itens"></div>
+              <div class="rate-field"><label>Detalhamento por ambiente (R$)</label><input type="number" id="r-det-amb"></div>
+              <div class="rate-field"><label>Executivo Interiores (R$/m²)</label><input type="number" id="r-exe-int"></div>
+              <div class="rate-field"><label>Executivo Arquitetônico (R$/m²)</label><input type="number" id="r-exe-arq"></div>
+            </div>
+            <div class="settings-actions">
+              <button class="btn btn-primary btn-sm" id="btn-save-rates">salvar valores</button>
+              <button class="btn btn-ghost btn-sm" id="btn-reset-rates">restaurar padrão 2026</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== ORÇAMENTO ===================== -->
+      <div class="card" style="position:sticky;top:96px">
+        <h2><span class="n">02</span>seu orçamento</h2>
+        <p class="hint">Itens adicionados aparecem aqui. Aplique desconto ou acréscimo geral se precisar antes de enviar.</p>
+
+        <div class="cart-list" id="cart-list">
+          <div class="cart-empty">nenhum item adicionado ainda</div>
+        </div>
+
+        <div class="adjust-row">
+          <label>Ajuste geral (%)</label>
+          <div class="adj-controls">
+            <input type="number" id="global-adjust" value="0" step="1">
+          </div>
+        </div>
+
+        <div class="totals">
+          <div class="t-row"><span>subtotal</span><span id="t-subtotal">R$ 0,00</span></div>
+          <div class="t-row"><span>ajuste</span><span id="t-adjust">R$ 0,00</span></div>
+          <div class="t-row final"><span>total</span><b id="t-total">R$ 0,00</b></div>
+        </div>
+
+        <div class="cart-actions">
+          <button class="btn btn-ghost" id="btn-clear">limpar</button>
+          <button class="btn btn-primary" id="btn-copy">copiar orçamento</button>
+        </div>
+        <a class="btn btn-accent" id="btn-whatsapp" style="width:100%;margin-top:10px" target="_blank" rel="noopener">
+          enviar por whatsapp
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2026 Laís Vieira — ferramenta pessoal de precificação</p>
+    <p>contato: <a href="mailto:arq.laisav@gmail.com">arq.laisav@gmail.com</a></p>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h3>orçamento pronto para copiar</h3>
+    <p class="mhint">Selecione tudo ou clique em "copiar" — o texto já sai formatado para enviar por WhatsApp ou e-mail.</p>
+    <textarea id="modal-text" readonly></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="btn-close-modal">fechar</button>
+      <button class="btn btn-primary" id="btn-copy-text">copiar texto</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="precificador.js"></script>
+</body>
+</html>
